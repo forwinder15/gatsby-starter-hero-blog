@@ -6,6 +6,7 @@ require("prismjs/themes/prism-okaidia.css");
 import Seo from "../components/Seo";
 import Article from "../components/Article";
 import Post from "../components/Post";
+import Sidebar from "../components/Sidebar";
 import { ThemeContext } from "../layouts";
 
 const PostTemplate = props => {
@@ -24,16 +25,26 @@ const PostTemplate = props => {
     <React.Fragment>
       <ThemeContext.Consumer>
         {theme => (
-          <Article theme={theme}>
-            <Post
-              post={post}
-              next={next}
-              prev={prev}
-              authornote={authorNote}
-              facebook={facebook}
-              theme={theme}
-            />
-          </Article>
+          <div style={{ display: "grid", gridTemplateColumns: "3fr 1fr", gap: "3em" }}>
+            <Article theme={theme}>
+              <Post
+                post={post}
+                next={next}
+                prev={prev}
+                authornote={authorNote}
+                facebook={facebook}
+                theme={theme}
+              />
+            </Article>
+            <Sidebar theme={theme}>
+              <h2>Popular posts</h2>
+              <ul>
+                <li>One post</li>
+                <li>Two posts</li>
+                <li>Three posts</li>
+              </ul>
+            </Sidebar>
+          </div>
         )}
       </ThemeContext.Consumer>
 
